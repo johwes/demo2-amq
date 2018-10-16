@@ -68,7 +68,6 @@ public class Frontend extends AbstractVerticle {
     ConfigRetriever.create(vertx).rxGetConfig()
       .flatMapCompletable(json -> {
         String amqpHost = json.getString("MESSAGING_SERVICE_HOST", "localhost");
-        // String amqpHost = "amqps://amqps-demo2-amq.apps.192.168.99.102.nip.io:443";
         int amqpPort = json.getInteger("MESSAGING_SERVICE_PORT", 5672);
         String amqpUser = json.getString("MESSAGING_SERVICE_USER", "work-queue");
         String amqpPassword = json.getString("MESSAGING_SERVICE_PASSWORD", "work-queue");
