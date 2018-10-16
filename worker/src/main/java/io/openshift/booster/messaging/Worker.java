@@ -39,6 +39,10 @@ public class Worker extends AbstractVerticle {
   private static final Logger LOGGER = LoggerFactory.getLogger(Worker.class);
   private static final String ID = "worker-vertx-" + UUID.randomUUID()
     .toString().substring(0, 4);
+  
+  private static final String AMQ_LOCATION_KEY = 
+        System.getenv().getOrDefault("AMQ_LOCATION_KEY", "burrUnknow");
+  
 
   private static final AtomicInteger requestsProcessed = new AtomicInteger(0);
   private static final AtomicInteger processingErrors = new AtomicInteger(0);
@@ -78,7 +82,7 @@ public class Worker extends AbstractVerticle {
     ProtonSender sender = conn.createSender(null);
 
     ProtonReceiver receiver = conn.createReceiver("work-requests");
-
+    
     receiver.handler((delivery, request) -> {
       LOGGER.info("{0}: Receiving request {1}", ID, request);
       String responseBody;
@@ -93,6 +97,7 @@ public class Worker extends AbstractVerticle {
 
       Map<String, Object> props = new HashMap<>();
       props.put("workerId", conn.getContainer());
+      props.put("AMQ_LOCATION_KEY",AMQ_LOCATION_KEY);
 
       Message response = Message.Factory.create();
       response.setAddress(request.getReplyTo());
