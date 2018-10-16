@@ -54,7 +54,7 @@ public class WorkerUpdate {
 
     @Override
     public String toString() {
-        return String.format("WorkerUpdate{workerId=%s, timestamp=%s, requestsProcessed=%s, processingErrors=%s}",
-                             workerId, timestamp, requestsProcessed, processingErrors);
+        return String.format("WorkerUpdate{workerId=%s, cloud=%s, timestamp=%s, requestsProcessed=%s, processingErrors=%s}",
+                             workerId, cloud, timestamp, requestsProcessed, processingErrors);
     }
 }
