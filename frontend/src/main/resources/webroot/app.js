@@ -123,7 +123,7 @@ class Application {
 
         for (let workerId in this.data.workers) {
             let update = this.data.workers[workerId];
-            let cloud = this.data.workers[cloud];
+            let cloud = update.cloud;
             let time = new Date(update.timestamp).toLocaleString();
             let requestsProcessed = update.requestsProcessed;
             let processingErrors = update.processingErrors;
