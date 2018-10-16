@@ -7,6 +7,8 @@ spec:
           value: work-queue-broker-amq-amqp
         - name: MESSAGING_SERVICE_PORT
           value: 5672
+        - name: AMQ_LOCATION_KEY
+          value: BURR  
         readinessProbe:
           httpGet:
             path: /
