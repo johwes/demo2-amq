@@ -19,6 +19,6 @@
 
 FROM tedross/demo-base
 MAINTAINER Ted Ross <tross@apache.org>
-ADD load.py /load.py
-CMD python /load.py
+ADD local_load.py /local_load.py
+CMD python /local_load.py
 

@@ -34,13 +34,15 @@ spec:
       - name: amq-interconnect
         env:
         - name: AMQ_LOCATION_KEY
-          value: RDU
+          value: BURR
         - name: ONPREM_SUFFIX
           value: ${ONPREM_SUFFIX}
         - name: AWS_SUFFIX
           value: ${AWS_SUFFIX}
         - name: GCP_SUFFIX
           value: ${GCP_SUFFIX}
+        - name: AZURE_SUFFIX
+          value: ${AZURE_SUFFIX}
         image: tedross/qpid-dispatch-router:1.2.0
         imagePullPolicy: Always
         ports:

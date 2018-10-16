@@ -63,7 +63,7 @@ connector {
     sslProfile: TLS
     saslMechanisms: EXTERNAL
     verifyHostName: no
-    cost: 20
+    cost: 10
 }
 
 connector {
@@ -73,8 +73,19 @@ connector {
     sslProfile: TLS
     saslMechanisms: EXTERNAL
     verifyHostName: no
-    cost: 30
+    cost: 10
 }
+
+connector {
+    host: inter-router-demo2-amq.${AZURE_SUFFIX}
+    port: 443
+    role: inter-router
+    sslProfile: TLS
+    saslMechanisms: EXTERNAL
+    verifyHostName: no
+    cost: 10
+}
+
 
 address {
     prefix: closest
