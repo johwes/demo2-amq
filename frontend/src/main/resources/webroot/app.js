@@ -90,7 +90,7 @@ class Application {
 
             let item = gesso.createDiv(div, "response");
             gesso.createDiv(item, "worker", response.workerId);
-            gesso.createDiv(item, "cloud", response.cloudId);
+            // gesso.createDiv(item, "cloud", response.cloudId);
             gesso.createDiv(item, "text", response.text);
         }
 
