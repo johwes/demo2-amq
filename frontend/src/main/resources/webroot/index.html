@@ -12,13 +12,29 @@
     <script>
       "use strict";
       const app = new Application();
+      function myTestFunc() {  // all this is hacking to figure out gesso
+        
+        console.log("Clicked Test");
+        // let div = gesso.createDiv(null, "#responses");
+        // let item = gesso.createDiv(div, "response");
+        // gesso.createDiv(item, "worker", "10x");
+        // gesso.createDiv(item, "cloud", "burr");
+        // gesso.createDiv(item, "text", "and more");
+        // gesso.replaceElement($("#responses"), div);
+
+        let headings = ["Worker", "Cloud", "Response"];
+        let rows = [];
+        rows.push(["whateverX", "AZR", "RRUB"]);
+        let table = gesso.createTable(null, headings, rows, {id: "responses"});
+        gesso.replaceElement($("#responses"), table);
+      }
     </script>
   </head>
   <body>
     <div id="-body">
       <div id="-body-content">
         <h1>Messaging Work Queue Burr</h1>
-
+        <button id="test" onclick="myTestFunc()">Test</button>
         <h2>Requests</h2>
 
         <form id="requests" method="post" action="javascript:void(0);">
@@ -35,6 +51,7 @@
           </div>
 
           <button>Send request</button>
+          
         </form>
 
         <h2>Responses</h2>

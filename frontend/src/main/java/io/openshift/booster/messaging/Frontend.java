@@ -182,7 +182,7 @@ public class Frontend extends AbstractVerticle {
     Map<String, Object> props = new HashMap<>();
     props.put("uppercase", request.isUppercase());
     props.put("reverse", request.isReverse());
-
+    
     Message message = Message.Factory.create();
     message.setMessageId(requestId);
     message.setAddress("work-requests");
