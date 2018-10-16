@@ -81,8 +81,8 @@ class Application {
 
         let div = gesso.createDiv(null, "#responses");
 
-        let headings = ["Worker", "Cloud", "Response"];
-        let rows = [];
+        // let headings = ["Worker", "Cloud", "Response"];
+        // let rows = [];
 
         for (let requestId of this.data.requestIds.reverse()) {
             let response = this.data.responses[requestId];
@@ -90,19 +90,19 @@ class Application {
             if (response == null) {
                 continue;
             }
-/*            
+            
             let item = gesso.createDiv(div, "response");
             gesso.createDiv(item, "worker", response.workerId);
-            // gesso.createDiv(item, "cloud", response.cloudId);
+            gesso.createDiv(item, "cloud", response.cloudId);
             gesso.createDiv(item, "text", response.text);
-*/            
-            rows.push([response.workerId, response.cloudId, response.text]);
+            
+            // rows.push([response.workerId, response.cloudId, response.text]);
         }
-        let table = gesso.createTable(null, headings, rows, {id: "responses"});
-        gesso.replaceElement($("#responses"), table);
+        // let table = gesso.createTable(null, headings, rows, {id: "responses"});
+        // gesso.replaceElement($("#responses"), table);
 
-        // gesso.replaceElement($("#responses"), div);
-        // 
+        gesso.replaceElement($("#responses"), div);
+         
     }
 
     renderWorkers() {

@@ -337,6 +337,12 @@ span.placeholder {
     width: 30%;
 }
 
+#responses > .response > .cloud {
+    display: inline-block;
+    font-weight: 300;
+    width: 30%;
+}
+
 #responses > .response > .text {
     display: inline;
 }
@@ -345,6 +351,7 @@ span.placeholder {
     width: 100%;
 }
 
+#workers th:nth-child(3),
 #workers th:nth-child(3),
 #workers th:nth-child(4),
 #workers td:nth-child(3),
