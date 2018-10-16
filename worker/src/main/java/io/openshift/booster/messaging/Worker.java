@@ -41,7 +41,7 @@ public class Worker extends AbstractVerticle {
     .toString().substring(0, 4);
   
   private static final String AMQ_LOCATION_KEY = 
-        System.getenv().getOrDefault("AMQ_LOCATION_KEY", "burrUnknow");
+        System.getenv().getOrDefault("AMQ_LOCATION_KEY", "burrUnknown");
   
 
   private static final AtomicInteger requestsProcessed = new AtomicInteger(0);
