@@ -68,6 +68,7 @@ public class Frontend extends AbstractVerticle {
     ConfigRetriever.create(vertx).rxGetConfig()
       .flatMapCompletable(json -> {
         String amqpHost = json.getString("MESSAGING_SERVICE_HOST", "localhost");
+        // String amqpHost = "amqps://amqps-demo2-amq.apps.192.168.99.102.nip.io:443";
         int amqpPort = json.getInteger("MESSAGING_SERVICE_PORT", 5672);
         String amqpUser = json.getString("MESSAGING_SERVICE_USER", "work-queue");
         String amqpPassword = json.getString("MESSAGING_SERVICE_PASSWORD", "work-queue");
@@ -118,9 +119,10 @@ public class Frontend extends AbstractVerticle {
     responseReceiver.handler((delivery, message) -> {
       Map props = message.getApplicationProperties().getValue();
       String workerId = (String) props.get("workerId");
+      String cloudId = (String) props.get("AMQ_LOCATION_KEY");
       String requestId = (String) message.getCorrelationId();
       String text = (String) ((AmqpValue) message.getBody()).getValue();
-      Response response = new Response(requestId, workerId, text);
+      Response response = new Response(requestId, workerId, cloudId, text);
 
       data.getResponses().put(response.getRequestId(), response);
 
