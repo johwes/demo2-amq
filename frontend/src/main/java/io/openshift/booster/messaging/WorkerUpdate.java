@@ -18,13 +18,15 @@ package io.openshift.booster.messaging;
 
 public class WorkerUpdate {
     private final String workerId;
+    private final String cloud;
     private final long timestamp;
     private final long requestsProcessed;
     private final long processingErrors;
 
-    public WorkerUpdate(String workerId, long timestamp, long requestsProcessed,
+    public WorkerUpdate(String workerId, String cloud, long timestamp, long requestsProcessed,
                         long processingErrors) {
         this.workerId = workerId;
+        this.cloud = cloud;
         this.timestamp = timestamp;
         this.requestsProcessed = requestsProcessed;
         this.processingErrors = processingErrors;
@@ -32,6 +34,10 @@ public class WorkerUpdate {
 
     public String getWorkerId() {
         return workerId;
+    }
+
+    public String getCloud() {
+        return cloud;
     }
 
     public long getTimestamp() {

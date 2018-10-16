@@ -102,6 +102,7 @@ class Application {
         gesso.replaceElement($("#responses"), table);
 
         // gesso.replaceElement($("#responses"), div);
+        // 
     }
 
     renderWorkers() {
@@ -116,17 +117,18 @@ class Application {
             return;
         }
 
-        let headings = ["ID", "Updated", "Requests processed", "Processing errors"];
+        let headings = ["ID", "Cloud", "Updated", "Requests processed", "Processing errors"];
         let rows = [];
         let now = new Date().getTime();
 
         for (let workerId in this.data.workers) {
             let update = this.data.workers[workerId];
+            let cloud = this.data.workers[cloud];
             let time = new Date(update.timestamp).toLocaleString();
             let requestsProcessed = update.requestsProcessed;
             let processingErrors = update.processingErrors;
 
-            rows.push([workerId, time, requestsProcessed, processingErrors]);
+            rows.push([workerId, cloud, time, requestsProcessed, processingErrors]);
         }
 
         let table = gesso.createTable(null, headings, rows, {id: "workers"});

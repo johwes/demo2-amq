@@ -150,6 +150,7 @@ public class Worker extends AbstractVerticle {
 
       Map<String, Object> properties = new HashMap<>();
       properties.put("workerId", conn.getContainer());
+      properties.put("AMQ_LOCATION_KEY",AMQ_LOCATION_KEY);
       properties.put("timestamp", System.currentTimeMillis());
       properties.put("requestsProcessed", (long) requestsProcessed.get());
       properties.put("processingErrors", (long) processingErrors.get());

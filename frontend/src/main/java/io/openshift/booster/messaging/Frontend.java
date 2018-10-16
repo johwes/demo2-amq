@@ -162,11 +162,12 @@ public class Frontend extends AbstractVerticle {
     receiver.handler((delivery, message) -> {
       Map props = message.getApplicationProperties().getValue();
       String workerId = (String) props.get("workerId");
+      String cloud = (String) props.get("AMQ_LOCATION_KEY");
       long timestamp = (long) props.get("timestamp");
       long requestsProcessed = (long) props.get("requestsProcessed");
       long processingErrors = (long) props.get("processingErrors");
 
-      WorkerUpdate update = new WorkerUpdate(workerId, timestamp, requestsProcessed,
+      WorkerUpdate update = new WorkerUpdate(workerId, cloud, timestamp, requestsProcessed,
         processingErrors);
 
       data.getWorkers().put(update.getWorkerId(), update);
