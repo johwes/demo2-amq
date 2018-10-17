@@ -104,3 +104,11 @@ controller/node_modules/
 
 # Generated TLS certificates and keys
 scripts/tls-certs
+
+/target
+/.vertx
+/bin
+.settings
+.project
+.classpath
+.DS_Store

@@ -1,2 +1,7 @@
 /target
 /.vertx
+/bin
+.settings
+.project
+.classpath
+.DS_Store

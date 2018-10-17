@@ -129,8 +129,8 @@ public class Worker extends AbstractVerticle {
     if (reverse) {
       text = new StringBuilder(text).reverse().toString();
     }
-
-    return text;
+    return text + " X";
+    // return text;
   }
 
   private void sendUpdates(ProtonConnection conn) {
