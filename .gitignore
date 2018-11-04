@@ -112,3 +112,5 @@ scripts/tls-certs
 .project
 .classpath
 .DS_Store
+.vscode
+/scripts/demo
