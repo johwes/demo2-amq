@@ -117,18 +117,20 @@ class Application {
             return;
         }
 
-        let headings = ["ID", "Cloud", "Updated", "Requests processed", "Processing errors"];
+        let headings = ["ID", "Cloud", "Requests", "Errors"];
+        // let headings = ["ID", "Cloud", "Updated", "Requests", "Errors"];
         let rows = [];
         let now = new Date().getTime();
 
         for (let workerId in this.data.workers) {
             let update = this.data.workers[workerId];
             let cloud = update.cloud;
-            let time = new Date(update.timestamp).toLocaleDateString();
+            // let time = new Date(update.timestamp).toLocaleDateString();
             let requestsProcessed = update.requestsProcessed;
             let processingErrors = update.processingErrors;
 
-            rows.push([workerId, cloud, time, requestsProcessed, processingErrors]);
+            // rows.push([workerId, cloud, time, requestsProcessed, processingErrors]);
+            rows.push([workerId, cloud, requestsProcessed, processingErrors]);
         }
 
         let table = gesso.createTable(null, headings, rows, {id: "workers"});

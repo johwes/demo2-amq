@@ -69,8 +69,10 @@ public class Frontend extends AbstractVerticle {
       .flatMapCompletable(json -> {
         String amqpHost = json.getString("MESSAGING_SERVICE_HOST", "localhost");
         int amqpPort = json.getInteger("MESSAGING_SERVICE_PORT", 5672);
-        String amqpUser = json.getString("MESSAGING_SERVICE_USER", "work-queue");
-        String amqpPassword = json.getString("MESSAGING_SERVICE_PASSWORD", "work-queue");
+        //String amqpUser = json.getString("MESSAGING_SERVICE_USER", "work-queue");
+        String amqpUser = json.getString("MESSAGING_SERVICE_USER", "");
+        // String amqpPassword = json.getString("MESSAGING_SERVICE_PASSWORD", "work-queue");
+        String amqpPassword = json.getString("MESSAGING_SERVICE_PASSWORD", "");
 
         String httpHost = json.getString("HTTP_HOST", "0.0.0.0");
         int httpPort = json.getInteger("HTTP_PORT", 8080);
@@ -80,6 +82,8 @@ public class Frontend extends AbstractVerticle {
         Future<Void> connected = Future.future();
         client.connect(amqpHost, amqpPort, amqpUser, amqpPassword, result -> {
           if (result.failed()) {
+            LOGGER.error("MESSAGING_SERVICE_HOST " + amqpHost);
+            LOGGER.error("MESSAGING_SERVICE_PORT " + amqpPort);
             connected.fail(result.cause());
           } else {
             ProtonConnection conn = result.result();
@@ -121,7 +125,15 @@ public class Frontend extends AbstractVerticle {
       String cloudId = (String) props.get("AMQ_LOCATION_KEY");
       String requestId = (String) message.getCorrelationId();
       String text = (String) ((AmqpValue) message.getBody()).getValue();
-      Response response = new Response(requestId, workerId, cloudId, text);
+
+      /*
+          trim down to the relevant substring      
+      */
+
+      int lastIndex = workerId.lastIndexOf("-");
+      String uniquePart = workerId.substring(lastIndex + 1);
+      // LOGGER.info("BURR: " + uniquePart);
+      Response response = new Response(requestId, uniquePart, cloudId, text);
 
       data.getResponses().put(response.getRequestId(), response);
 
