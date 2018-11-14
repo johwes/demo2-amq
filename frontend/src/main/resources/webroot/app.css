@@ -334,13 +334,13 @@ span.placeholder {
 #responses > .response > .worker {
     display: inline-block;
     font-weight: 300;
-    width: 30%;
+    width: 15%;
 }
 
 #responses > .response > .cloud {
     display: inline-block;
     font-weight: 300;
-    width: 30%;
+    width: 15%;
 }
 
 #responses > .response > .text {
