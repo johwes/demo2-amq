@@ -129,7 +129,7 @@ public class Worker extends AbstractVerticle {
     if (reverse) {
       text = new StringBuilder(text).reverse().toString();
     }
-    return "Olá " + text;
+    return "Ola " + text;
     // return text;
   }
 
