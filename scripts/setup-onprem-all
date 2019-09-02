@@ -1,10 +1,10 @@
 ./setup-onprem-ic-only
 oc apply -f workload.yaml
 oc apply -f ../frontend/.openshiftio/application.yaml
-oc new-app --template=vertx-messaging-frontend \
-  -p SOURCE_REPOSITORY_URL=https://github.com/burrsutter/demo2-amq \
-  -p SOURCE_REPOSITORY_REF=master \
-  -p SOURCE_REPOSITORY_DIR=frontend
+# oc new-app --template=vertx-messaging-frontend \
+#  -p SOURCE_REPOSITORY_URL=https://github.com/burrsutter/demo2-amq \
+#  -p SOURCE_REPOSITORY_REF=master \
+#  -p SOURCE_REPOSITORY_DIR=frontend
 oc apply -f ../worker/.openshiftio/application.yaml
 oc new-app --template=vertx-messaging-worker \
   -p SOURCE_REPOSITORY_URL=https://github.com/burrsutter/demo2-amq \
