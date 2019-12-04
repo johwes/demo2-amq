@@ -132,7 +132,7 @@ public class Frontend extends AbstractVerticle {
 
       int lastIndex = workerId.lastIndexOf("-");
       String uniquePart = workerId.substring(lastIndex + 1);
-      // LOGGER.info("BURR: " + uniquePart);
+      // LOGGER.info("ONPREM: " + uniquePart);
       Response response = new Response(requestId, uniquePart, cloudId, text);
 
       data.getResponses().put(response.getRequestId(), response);
